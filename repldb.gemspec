@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{A simple client for replit db}
   s.files = ["README.md", "LICENSE", "lib/repldb.rb", "bin/repldb"]
   s.test_files = ["test/test.rb"]
-  s.homepage = %q{https://docs.replit.com/misc/database}
+  s.homepage = %q{https://github.com/cursorweb/rubygem-repldb}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.6.2}
   s.summary = %q{Ruby Repldb!}

@@ -1,5 +1,6 @@
 # Ruby Repldb
 The ease of using repldb now meets the ease of developing in Ruby!
+You can learn more about repldb [here](https://docs.replit.com/misc/database)
 
 # Usage
 ```rb
