@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "repldb"
-  s.version            = "0.0.1"
+  s.version            = "0.0.2"
   s.default_executable = "repldb"
 
   s.licenses = "MIT"
