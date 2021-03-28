@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+require 'repldb'
+
+db = Client.new
+
+def colorize(inp)
+  inp.gsub(/<(.+?)>/, "<\x1b[93m\\1\x1b[0m>")
+end
+
+def help_message
+  puts colorize "\x1b[1m% -30sDescription\x1b[0m
+% -30sGets <key>
+% -30sSets <key> to <val>
+% -30sDeletes <key>
+% -30sGets all keys" % ["Name", "repldb get <key>", "repldb set <key> <val>", "repldb del <key>", "repldb all"]
+end
+
+a0 = ARGV[0]
+a1 = ARGV[1]
+a2 = ARGV[2]
+len = ARGV.length - 1
+
+if !a0
+  help_message
+  exit 0
+end
+
+case a0.downcase
+when 'get'
+  if len == 1; pp(db.get(a1))
+  else puts colorize "Expected <key>" end
+when 'set'
+  if len == 2
+    db.set(a1, a2)
+    puts "Set '\x1b[1m#{a1}\x1b[0m' to '\x1b[1m#{a2}\x1b[0m'
+(output may have been json)"
+  else puts colorize "Expected <key> and <val>" end
+when 'del'
+  if len == 1
+    db.del(a1)
+    puts "Deleted '\x1b[1m#{a1}\x1b[0m'"
+  else puts colorize "Expected <key>" end
+when 'all'
+  if len == 0; pp db.keys(a1 || '')
+  else puts "Usage: \x1b[1mrepldb all\x1b[0m" end
+else
+  help_message
+end
